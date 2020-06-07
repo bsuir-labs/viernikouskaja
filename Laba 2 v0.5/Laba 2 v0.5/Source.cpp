@@ -31,7 +31,7 @@ int main()
 	read();
 	find_bridges();
 	Sort(1, pol);
-	ofstream out("D:\\Desktop\\TIIT-All-2-Sem-master\\TIIT-All-2-Sem-master\\[Laba 2]\\Laba 2 v0.5\\bridges.out");
+	ofstream out("bridges.out");
 	out << pol << endl;
 	for (int y = 1; y <= pol; y++)
 		out << result[y] << " ";
@@ -44,7 +44,7 @@ void read()
 {
 	int Dorogi;
 	int t1, t2;
-	ifstream fin("D:\\Desktop\\TIIT-All-2-Sem-master\\TIIT-All-2-Sem-master\\[Laba 2]\\Laba 2 v0.5\\bridges.in");
+	ifstream fin("bridges.in");
 	fin >> n;
 	fin >> Dorogi;
 	for (int i = 0; i < Dorogi; i++)
@@ -53,7 +53,7 @@ void read()
 			break;
 		fin >> t1;
 		fin >> t2;
-		g[t1].push_back(t2);	//Список смежности
+		g[t1].push_back(t2);	//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		g[t2].push_back(t1);
 		num[t1][kol[t1]] = i + 1; kol[t1]++;
 		num[t2][kol[t2]] = i + 1; kol[t2]++;
@@ -68,19 +68,19 @@ void find_bridges()
 		used[i] = false;
 	for (int i = 0; i < n; ++i)
 		if (!used[i])
-			dfs(i,-1); //В глубину
+			dfs(i,-1); //пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
-//v - вершина от которой начинается поиск; p - вершина с которой убераем ребро.
+//v - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ; p - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
 void dfs(int v, int p = -1)
 {
 	used[v] = true;
 	arrB[v] = arrA[v] = timer++;
 	for (size_t i = 0; i < g[v].size(); ++i)
 	{
-		int to = g[v][i];	//to это каждая вершина с которой связана V
+		int to = g[v][i];	//to пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ V
 
-		if (to == p)  continue; // Если to - вершина с которой убераем ребро
+		if (to == p)  continue; // пїЅпїЅпїЅпїЅ to - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if (used[to])
 			arrA[v] = min(arrA[v], arrB[to]);
 		else
