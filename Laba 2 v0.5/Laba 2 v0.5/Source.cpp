@@ -53,6 +53,8 @@ void read()
 			break;
 		fin >> t1;
 		fin >> t2;
+		--t1;
+		--t2;
 		g[t1].push_back(t2);	//������ ���������
 		g[t2].push_back(t1);
 		num[t1][kol[t1]] = i + 1; kol[t1]++;
